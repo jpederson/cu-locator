@@ -1,0 +1,271 @@
+@import url(//fonts.googleapis.com/css?family=Open+Sans:300,700);
+
+@import "mixins";
+@import "grid";
+
+// colors
+$shadow-color: rgba( 0, 0, 0, .9);
+$base-color: #333;
+$red: #be1e2d;
+
+
+// layout variables
+$pad: 15px;
+
+
+// reset border box model
+*, *:before, *:after {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+
+// set max-widths for responsive things
+img, video, iframe {
+	max-width: 100%;
+}
+
+iframe {
+	width: 100%;
+}
+
+
+// font mixins
+@mixin font {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+}
+
+@mixin font-bold {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+}
+
+
+
+// base styles
+body {
+	padding: 0;
+	margin: 0;
+	color: lighten( $base-color, 20% );
+}
+
+a {
+	color: $base-color;
+	text-decoration: none;
+	@include font-bold;
+	border-bottom: 1px dotted lighten( $base-color, 30% );
+	transition: color 400ms ease-in-out;
+
+	&:hover {
+		color: $red;
+	}
+}
+
+h1, h2, h3, h4, h5, h6 {
+	@include font;
+	text-shadow: 2px 2px 15px #ccc;
+    font-weight: normal;
+
+	span {
+		@include font-bold;
+	}
+}
+
+h1 {
+    font-size: 32px;
+    line-height: 38px;
+    letter-spacing: -1px;
+}
+
+h2 {
+	font-size: 26px;
+	line-height: 32px;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+	margin: 0;
+    padding: 7px 0;
+}
+
+body, p, blockquote, ul, ol, li {
+	@include font;
+    font-size: 100%;
+    line-height: 140%;
+}
+
+strong, th {
+	@include font-bold;
+}
+
+ol, ul {
+	margin: 0;
+	padding: $pad/2 0 0 $pad*2;
+}
+
+li {
+	padding-bottom: 8px;
+}
+
+hr {
+	border: 0;
+	border-bottom: 1px solid #ddd;
+	background: none;
+	margin: $pad*2 0;
+	padding: 0;
+	height: 0;
+}
+
+
+
+// layout styles
+#search {
+	padding: $pad;
+	background: url(../img/bg-wood.png) 50% 0;
+
+	header {
+		text-align: center;
+
+		h1, h2 {
+			text-shadow: 2px 2px 15px $shadow-color;
+			color: white;
+
+			span {
+				color: #fff;
+			}
+		}
+
+		h1 {
+			@include respond-to( 768px ) {
+				font-size: 3em;
+				line-height: 1.5em;
+			}
+		}
+	}
+
+	#tool {
+		margin: 0 auto;
+		max-width: 650px;
+	
+		@include respond-to( 1024px ) {
+			max-width: 800px;
+		}
+
+		#widget {
+			border: 0;
+			width: 100%;
+			min-height: 300px;
+		}
+	}
+}
+
+.bg-wall {
+	background: url(../img/bg-wall.png) fixed;
+	padding: $pad;
+}
+
+.bg-wood {
+	background: url(../img/bg-wood.png) fixed;
+	padding: $pad;
+	color: white;
+}
+
+#integrate {
+	box-shadow: 0 0 35px $shadow-color;
+	min-height: 500px;
+}
+
+#test {
+	.grid-row {
+		max-width: 1150px;
+		margin: 0 auto;
+	}
+}
+
+#footer {
+	text-align: center;
+	padding: $pad $pad $pad*3;
+	text-shadow: 0 0 10px #000;
+	
+	p {
+		color: lighten( $base-color, 30% );
+		font-size: 90%;
+	}
+
+	a {
+		color: lighten( $base-color, 40% );
+		font-weight: 300;
+
+		&:hover {
+			color: white;
+		}
+	}
+}
+
+.clear {
+	clear: both;
+}
+
+.center {
+	text-align: center;
+}
+
+.quiet {
+	color: #aaa;
+	font-size: 90%;
+}
+
+.third, .half {
+	padding: $pad*2;
+	border-bottom: 1px solid #ddd;
+
+	&.last {
+		border-bottom: 0;
+	}
+}
+
+.sprite {
+	background: transparent top center no-repeat;
+	color: transparent;
+	display: block;
+	border: 0;
+	text-indent: -200px;
+	overflow: hidden;
+	
+	&.right {
+		float: right;
+		margin: 0 0 10px 10px;
+	}
+
+	&:hover {
+		background: transparent bottom center no-repeat;
+	}
+
+	&.coop {
+		background-image: url(../img/logo-coop.png);
+		height: 130px;
+		width: 130px;
+	}
+}
+
+
+@media only screen and (min-width: 840px) {
+
+	.half {
+		width: 50%;
+		border: 0;
+		float: left;
+	}
+
+	.third {
+		width: 33.3333%;
+		border: 0;
+		float: left;
+	}
+	
+	#integrate, #footer {
+		padding: $pad*2 $pad*2.5;
+	}
+}
+
