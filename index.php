@@ -31,7 +31,7 @@ error_reporting('E_NOTICE');
 				<p>Most credit union websites lack dynamic and usable ATM and Branch search tools. Sure, they can
 					link to a third party, or download one of the several databases that can be obtained, but 
 					easily-embedded, pre-existing search tools are few and far between. With that in mind, 
-					I created <strong>creditunion.io</strong>. While users can come here directly to search, it's 
+					I created <strong>mycu.rocks</strong>. While users can come here directly to search, it's 
 					really designed to be easy to build into your existing website using a small code snippet.</p>
 				<p>We keep ATM and Branch lists up to date from the networks so you don't need to update your 
 					database every time location updates occur. Continual improvements to the tool will add 
