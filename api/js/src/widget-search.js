@@ -22,7 +22,7 @@ var get_locations_by_zip = function() {
 		api_call( "search", "zipcode="+zipcode+"&radius="+radius, function(data){
 			
 			// log the data temporarily.
-			log( data );
+			// log( data );
 
 			// if error, display no-results div.
 			if ( data=="No results." || data=="Invalid API Request." ) {
@@ -75,7 +75,7 @@ function get_locations_by_coords( latitude, longitude ) {
 		api_call( "search", "latitude="+latitude+"&longitude="+longitude+"&radius="+radius, function(data){
 
 			// log for debug
-			log( data );
+			// log( data );
 
 			// test for results
 			if ( data=="No results." || data=="Invalid API Request." ) {
@@ -105,6 +105,7 @@ function get_locations_by_coords( latitude, longitude ) {
 				});
 				add_atm_markers( atms );
 				add_branch_markers( branches );
+				
 			}
 		});
 

@@ -20,4 +20,3 @@ var show_no_results_error = function() {
 }
 
 
-

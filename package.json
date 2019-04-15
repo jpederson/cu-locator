@@ -1,12 +1,12 @@
 {
-    "name" : "creditunion.io",
-    "version" : "1.0.0",
-    "devDependencies" : {
-        "grunt" :                       "latest",
-        "grunt-contrib-cssmin":         "*",
-        "grunt-contrib-sass":           "*",
-        "grunt-contrib-uglify":         "*",
-        "grunt-contrib-watch":          "*",
-        "matchdep":                     "*"
+    "name": "cu-locator",
+    "version": "1.0.0",
+    "devDependencies": {
+        "grunt": "latest",
+        "grunt-contrib-cssmin": "*",
+        "grunt-contrib-sass": "*",
+        "grunt-contrib-uglify": "*",
+        "grunt-contrib-watch": "*",
+        "matchdep": "*"
     }
 }
