@@ -1,7 +1,6 @@
 <?php
 error_reporting('E_NOTICE');
-?>
-<!doctype html>
+?><!doctype html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
@@ -31,7 +30,7 @@ error_reporting('E_NOTICE');
 				<p>Most credit union websites lack dynamic and usable ATM and Branch search tools. Sure, they can
 					link to a third party, or download one of the several databases that can be obtained, but 
 					easily-embedded, pre-existing search tools are few and far between. With that in mind, 
-					I created <strong>mycu.rocks</strong>. While users can come here directly to search, it's 
+					I created this project. While users can come here directly to search, it's 
 					really designed to be easy to build into your existing website using a small code snippet.</p>
 				<p>We keep ATM and Branch lists up to date from the networks so you don't need to update your 
 					database every time location updates occur. Continual improvements to the tool will add 
@@ -39,7 +38,7 @@ error_reporting('E_NOTICE');
 				<p>I hope your credit union can benefit from this tool. Please let me know how it works for you
 					or if you have any suggestions - I'm always looking for ways to improve.</p>
 				<p>Cheers,<br />
-					<a href="http://www.jpederson.com/" target="_blank">James Pederson</a><br />
+					<a href="https://jpederson.com/" target="_blank">James Pederson</a><br />
 					Web Developer</p>
 			</div>
 			<div class="third">
@@ -57,7 +56,7 @@ error_reporting('E_NOTICE');
 					no matter where a user searches from. I'll keep searching for more locations, but if you happen
 					to know of a database I could use, drop me a line and tell me about it!</p>
 				<p>Likewise, if you have feedback or would like help integrating the tool in your website, please 
-					feel free to <a href="http://www.jpederson.com/" target="_blank">contact me</a> and I'll do everything 
+					feel free to <a href="https://jpederson.com/" target="_blank">contact me</a> and I'll do everything 
 					I can to help.</p>
 			</div>
 			<div class="third last">
