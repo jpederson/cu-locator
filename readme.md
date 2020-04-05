@@ -72,7 +72,7 @@ The widgets are responsive, so you just have to pull them into an iframe of what
 /api/?action=widget
 ```
 
-Here's a bit of iframe code to pull in a widget that expands to the full width of whatever container it's put into, and is 350px tall.
+Here's a bit of iframe code to pull in a widget that expands to the full width of whatever container it's put into, and is 350px tall. Obviously, if your widget will be on another site, use the full URL to refer to wherever you're hosting this tool, instead of the relative URL we use below.
 
 ```
 <iframe src="/api/?action=widget" style="border: 0; width: 100%; height: 350px;"></iframe>
