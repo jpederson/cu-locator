@@ -26,7 +26,7 @@ Once you've finished these steps, and set up your apache/nginx virtual host conf
 
 *****
 
-### Using API
+### Using the API
 
 Assuming the project is installed at the root level of your webhost (it can be installed in subdirectories, but for the purposes of this documentation, we'll assume it's in the root), the following API endpoints are available to you once everything is installed correctly.
 
@@ -60,6 +60,22 @@ The default search radius is 25 miles. Specify your own `radius` parameter with 
 
 ```
 /api/?action=search&zipcode=53714&radius=25
+```
+
+*****
+
+### Widgets
+
+The widgets are responsive, so you just have to pull them into an iframe of whatever size you need, and they'll use the space. There is a `widget` action in the API, requested like so:
+
+```
+/api/?action=widget
+```
+
+Here's a bit of iframe code to pull in a widget that expands to the full width of whatever container it's put into, and is 350px tall.
+
+```
+<iframe src="https://your.domain/api/?action=widget" style="border: 0; width: 100%; height: 350px;"></iframe>
 ```
 
 *****
