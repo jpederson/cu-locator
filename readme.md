@@ -1,5 +1,13 @@
 ## Credit Union Locator
 
+This repository contains a website for a credit union locator, and an API with multiple endpoints to search a MySQL database filled with Credit Union ATM and Branch locations.
+
+![preview](preview.jpg)
+
+*****
+
+### Installation
+
 To install this, clone the repository to a folder on your server, like so:
 
 ```shell
