@@ -75,8 +75,10 @@ The widgets are responsive, so you just have to pull them into an iframe of what
 Here's a bit of iframe code to pull in a widget that expands to the full width of whatever container it's put into, and is 350px tall.
 
 ```
-<iframe src="https://your.domain/api/?action=widget" style="border: 0; width: 100%; height: 350px;"></iframe>
+<iframe src="/api/?action=widget" style="border: 0; width: 100%; height: 350px;"></iframe>
 ```
+
+To see how the widget displays for various device sizes, check out the test.php file to see phone/tablet/laptop sized widgets, or visit the root of the project and resize your browser to see how it adapts.
 
 *****
 
