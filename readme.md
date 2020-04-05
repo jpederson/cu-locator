@@ -14,4 +14,6 @@ cp config-sample.php config.php
 
 Enter your database credentials and db name into the config.php file.
 
-This project requires that you have it installed in the root of the web host - so you'll need to set up a domain for it, so that the app is available in the root of the host.
+*****
+
+Developed with love by [James Pederson](https://jpederson.com).

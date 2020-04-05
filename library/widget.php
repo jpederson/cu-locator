@@ -1,48 +1,77 @@
 <?php
 
 
-function search() {
+// function for the 'search' API endpoint
+function api_search() {
 
-	$type=request( "type" );
-	$format=request( "format", "json" );
+	// get request parameters
 	$radius=request( "radius", 25 );
-		
-	// zipcode search
 	$zipcode=request( "zipcode" );
+	$latitude=request( "latitude" );
+	$longitude=request( "longitude" );
+
+	// zipcode search
 	if ( !empty( $zipcode ) ) {
 		$results=get_locations_by_zipcode( $zipcode, $radius );
 	}
 
 	// latitude and longitude search
-	$latitude=request( "latitude" );
-	$longitude=request( "longitude" );
 	if ( !empty( $latitude ) && !empty( $longitude ) ) {
 		$results=get_locations_by_coords( $latitude, $longitude, $radius );
 	}
 
-	if ( isset( $results ) ) {
+	// add the input parameters to the results for reference
+	$results->parameters = array(
+		'radius' => $radius,
+		'zipcode' => $zipcode,
+		'latitude' => $latitude,
+		'longitude' => $longitude
+	);
+
+	// if we have results
+	if ( isset( $results->branches ) && isset( $results->atms ) ) {
+
+		// if the results are empty
 		if ( empty( $results->branches ) && empty( $results->atms ) ) {
+
+			// return no results message
 			print "No results.";
-		} else {
-			switch ( $format ) {
-				case "json":
-					print json_encode( $results );
-				break;
-			}
+
+		} else { // if we've got results
+
+			// return the results object
+			print json_encode( $results );
+
 		}
 	} else {
-		print "Invalid API Request.";
+
+		// if no input was sent, provide a message to say what's missing.
+		print "Incomplete API Request: You must pass either a 'zipcode' or 'latitude' and 'longitude' parameters to get results.";
 	}
 
 }
-api_hook( "search", "search" );
+api_hook( "search", "api_search" );
 
 
+// function for the 'stats' endpoint
+function api_stats() {
 
+	// get the stats
+	print json_encode( get_location_stats() );
+
+}
+api_hook( "stats", "api_stats" );
+
+
+// get stats about the number of atms and branches.
 function get_location_stats() {
 	global $db;
+
+	// get counts
 	$branch_count=$db->query_one( "SELECT count(*) AS `count` FROM `branch`;" );
 	$atm_count=$db->query_one( "SELECT count(*) AS `count` FROM `atm`;" );
+
+	// return them in an object
 	return (object) array(
 		"branch_count" => $branch_count->count,
 		"atm_count" => $atm_count->count
@@ -50,7 +79,7 @@ function get_location_stats() {
 }
 
 
-
+// get locations by zipcode
 function get_locations_by_zipcode( $zipcode, $radius=10, $type="branch,atm" ) {
 	global $db;
 
@@ -58,23 +87,23 @@ function get_locations_by_zipcode( $zipcode, $radius=10, $type="branch,atm" ) {
 	$zip_info=$db->query_one( "SELECT * FROM `zipcode` WHERE `zipcode`=\"" . $zipcode . "\" LIMIT 1;" );
 
 	// calculate range based on radius
-	$range=($radius/69.172);
+	$range = ( $radius/69.172 );
 
 	// set up min and max variables for our query
-	$lat_min=$zip_info->latitude-$range;
-	$lat_max=$zip_info->latitude+$range;
-	$long_min=$zip_info->longitude-$range;
-	$long_max=$zip_info->longitude+$range;
+	$lat_min = $zip_info->latitude-$range;
+	$lat_max = $zip_info->latitude+$range;
+	$long_min = $zip_info->longitude-$range;
+	$long_max = $zip_info->longitude+$range;
 
 	// get the results
-	$response=new stdClass;
+	$response = new stdClass;
 	if ( stristr( $type, "branch" ) ) $response->branches=$db->query( "SELECT * FROM `branch` WHERE ( `latitude`>$lat_min AND `latitude`<$lat_max ) AND ( `longitude`>$long_min AND `longitude`<$long_max );" );
 	if ( stristr( $type, "atm" ) ) $response->atms=$db->query( "SELECT * FROM `atm` WHERE ( `latitude`>$lat_min AND `latitude`<$lat_max ) AND ( `longitude`>$long_min AND `longitude`<$long_max );" );
 	return $response;
 }
 
 
-
+// get atm and branch locations by geographical coordinates
 function get_locations_by_coords( $latitude, $longitude, $radius=10 ) {
 	global $db;
 	// calculate range based on radius
@@ -95,8 +124,9 @@ function get_locations_by_coords( $latitude, $longitude, $radius=10 ) {
 }
 
 
-
+// display the widget.
 function widget() {
+
 	// get a custom stylesheet if it's been specified.
 	$custom_css=request( "custom-css" );
 
@@ -153,13 +183,9 @@ function widget() {
 
 	  ga('create', 'UA-614793-7', 'creditunion.io');
 	  ga('send', 'pageview');
-
 	</script>
   </body>
-</html>
-<?php
+</html><?php
 }
 api_hook( "widget", "widget" );
 
-
-?>

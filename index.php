@@ -68,8 +68,8 @@ error_reporting('E_NOTICE');
 		</div>
 	</div>
 	<div id="footer" class="bg-wood">
-		<p>Copyright &copy; <?php print date( "Y" ); ?> <a href="https://jpederson.com/" target="_blank">James Pederson</a>. All Rights Reserved.</p>
-		<p>CO-OP Network logo and name are property of their respective owners.</p>
+		<p>Developed with love by <a href="https://jpederson.com/" target="_blank">James Pederson</a>.</p>
+		<p>CO-OP Network logo, name, and database are property of their respective owners.</p>
 	</div>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="js/main.js"></script>
