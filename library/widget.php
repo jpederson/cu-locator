@@ -56,7 +56,7 @@ api_hook( "search", "api_search" );
 // function for the 'stats' endpoint
 function api_stats() {
 
-	// get the stats
+	// output the stats in json 
 	print json_encode( get_location_stats() );
 
 }
@@ -64,7 +64,7 @@ api_hook( "stats", "api_stats" );
 
 
 // get stats about the number of atms and branches.
-function get_location_stats() {
+function get_location_stats() {		
 	global $db;
 
 	// get counts
@@ -106,6 +106,7 @@ function get_locations_by_zipcode( $zipcode, $radius=10, $type="branch,atm" ) {
 // get atm and branch locations by geographical coordinates
 function get_locations_by_coords( $latitude, $longitude, $radius=10 ) {
 	global $db;
+
 	// calculate range based on radius
 	$range=$radius/69.172;
 
@@ -120,6 +121,8 @@ function get_locations_by_coords( $latitude, $longitude, $radius=10 ) {
 		"branches" => $db->query( "SELECT * FROM `branch` WHERE ( `latitude`>$lat_min AND `latitude`<$lat_max ) AND ( `longitude`>$long_min AND `longitude`<$long_max );" ),
 		"atms" => $db->query( "SELECT * FROM `atm` WHERE ( `latitude`>$lat_min AND `latitude`<$lat_max ) AND ( `longitude`>$long_min AND `longitude`<$long_max );" )
 	);
+
+	// return the response variable
 	return $response;
 }
 
