@@ -12,12 +12,12 @@ function api_search() {
 
 	// zipcode search
 	if ( !empty( $zipcode ) ) {
-		$results=get_locations_by_zipcode( $zipcode, $radius );
+		$results = get_locations_by_zipcode( $zipcode, $radius );
 	}
 
 	// latitude and longitude search
 	if ( !empty( $latitude ) && !empty( $longitude ) ) {
-		$results=get_locations_by_coords( $latitude, $longitude, $radius );
+		$results = get_locations_by_coords( $latitude, $longitude, $radius );
 	}
 
 	// add the input parameters to the results for reference
@@ -80,14 +80,14 @@ function get_location_stats() {
 
 
 // get locations by zipcode
-function get_locations_by_zipcode( $zipcode, $radius=10, $type="branch,atm" ) {
+function get_locations_by_zipcode( $zipcode, $radius=10 ) {
 	global $db;
 
 	// get zipcode info so that we know the latitude and longitude of the zipcode
 	$zip_info=$db->query_one( "SELECT * FROM `zipcode` WHERE `zipcode`=\"" . $zipcode . "\" LIMIT 1;" );
 
 	// calculate range based on radius
-	$range = ( $radius/69.172 );
+	$range = ( $radius / 69.172 );
 
 	// set up min and max variables for our query
 	$lat_min = $zip_info->latitude-$range;
@@ -97,8 +97,8 @@ function get_locations_by_zipcode( $zipcode, $radius=10, $type="branch,atm" ) {
 
 	// get the results
 	$response = new stdClass;
-	if ( stristr( $type, "branch" ) ) $response->branches=$db->query( "SELECT * FROM `branch` WHERE ( `latitude`>$lat_min AND `latitude`<$lat_max ) AND ( `longitude`>$long_min AND `longitude`<$long_max );" );
-	if ( stristr( $type, "atm" ) ) $response->atms=$db->query( "SELECT * FROM `atm` WHERE ( `latitude`>$lat_min AND `latitude`<$lat_max ) AND ( `longitude`>$long_min AND `longitude`<$long_max );" );
+	$response->branches=$db->query( "SELECT * FROM `branch` WHERE ( `latitude`>$lat_min AND `latitude`<$lat_max ) AND ( `longitude`>$long_min AND `longitude`<$long_max );" );
+	$response->atms=$db->query( "SELECT * FROM `atm` WHERE ( `latitude`>$lat_min AND `latitude`<$lat_max ) AND ( `longitude`>$long_min AND `longitude`<$long_max );" );
 	return $response;
 }
 
@@ -108,19 +108,18 @@ function get_locations_by_coords( $latitude, $longitude, $radius=10 ) {
 	global $db;
 
 	// calculate range based on radius
-	$range=$radius/69.172;
+	$range = ( $radius / 69.172 );
 
 	// set up min and max variables for our query
-	$lat_min=$latitude-$range;
-	$lat_max=$latitude+$range;
-	$long_min=$longitude-$range;
-	$long_max=$longitude+$range;
+	$lat_min = $latitude-$range;
+	$lat_max = $latitude+$range;
+	$long_min = $longitude-$range;
+	$long_max = $longitude+$range;
 
 	// get the results
-	$response=(object) array(
-		"branches" => $db->query( "SELECT * FROM `branch` WHERE ( `latitude`>$lat_min AND `latitude`<$lat_max ) AND ( `longitude`>$long_min AND `longitude`<$long_max );" ),
-		"atms" => $db->query( "SELECT * FROM `atm` WHERE ( `latitude`>$lat_min AND `latitude`<$lat_max ) AND ( `longitude`>$long_min AND `longitude`<$long_max );" )
-	);
+	$response = new stdClass;
+	$response->branches=$db->query( "SELECT * FROM `branch` WHERE ( `latitude`>$lat_min AND `latitude`<$lat_max ) AND ( `longitude`>$long_min AND `longitude`<$long_max );" );
+	$response->atms=$db->query( "SELECT * FROM `atm` WHERE ( `latitude`>$lat_min AND `latitude`<$lat_max ) AND ( `longitude`>$long_min AND `longitude`<$long_max );" );
 
 	// return the response variable
 	return $response;
