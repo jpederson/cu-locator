@@ -1,6 +1,6 @@
 ## Credit Union Locator
 
-This repository contains a website for a credit union locator, and an API with multiple endpoints to search a MySQL database filled with Credit Union ATM and Branch locations.
+This repository contains a website for a credit union locator, embeddable widgets, and an API with multiple endpoints to search a MySQL database filled with Credit Union (and other Fee-Free) ATM and Branch locations.
 
 ![preview](preview.jpg)
 
