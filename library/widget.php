@@ -39,7 +39,6 @@ api_hook( "search", "search" );
 
 
 
-
 function get_location_stats() {
 	global $db;
 	$branch_count=$db->query_one( "SELECT count(*) AS `count` FROM `branch`;" );
@@ -49,7 +48,6 @@ function get_location_stats() {
 		"atm_count" => $atm_count->count
 	);
 }
-
 
 
 
@@ -104,20 +102,15 @@ function widget() {
 
 	// get the api key so we can check it.
 	$api_key=request( "api-key", "trial" );
-	$user_info=get_user_by_api_key( $api_key );
+	// $user_info=get_user_by_api_key( $api_key );
 
 	$show_ads=true;
-
-	// check if it's a pro customer
-	if ( $user_info->type=="pro" ) {
-		$show_ads=false;
-	}
 
 ?><!DOCTYPE html>
 <html>
   <head>
     <title>Credit Union Search Tool</title>
-    <link href="/api/css/widget.css?v=2" rel="stylesheet" rel="stylesheet" media="screen" />
+    <link href="css/widget.css?v=2" rel="stylesheet" rel="stylesheet" media="screen" />
     <?php if ( !empty( $custom_css ) ) { ?>
     <link href="<?php print $custom_css ?>" rel="stylesheet" rel="stylesheet" media="screen" />
     <?php } ?>
@@ -149,15 +142,9 @@ function widget() {
 		<div class="no-results">
 			No results found.
 		</div>
-		<?php if ( $user_info->type!="pro" ) { ?>
-		<div class="ad">
-			<a href="https://mycu.rocks/" target="_blank">powered by<br>
-				<strong>mycu.rocks</strong></a>
-		</div>
-		<?php } ?>
 	</div>
     <script src="//maps.google.com/maps/api/js?key=<?php print GMAP_API_KEY ?>"></script>
-    <script src="/api/js/widget.js"></script>
+    <script src="js/widget.js"></script>
 	<script>
 	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

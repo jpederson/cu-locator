@@ -9,11 +9,11 @@ module.exports = function(grunt) {
         // watch for changes and trigger compass, jshint, uglify and livereload
         watch: {
             js: {
-                files: ['asset/js/*.js', 'api/js/lib/*.js', 'api/js/src/*.js'],
+                files: ['js/*.js', 'api/js/lib/*.js', 'api/js/src/*.js'],
                 tasks: ['uglify']
             },
             css: {
-                files: ['asset/css/*.scss', 'api/css/*.scss'],
+                files: ['css/*.scss', 'api/css/*.scss'],
                 tasks: ['sass'],
                 options: {
                     livereload: true
@@ -29,7 +29,7 @@ module.exports = function(grunt) {
                     style: 'compressed'
                 },
                 files: {
-                    'asset/css/main.css': 'asset/css/main.scss',
+                    'css/main.css': 'css/main.scss',
                     'api/css/widget.css': 'api/css/widget.scss'
                 }
             }
@@ -40,7 +40,7 @@ module.exports = function(grunt) {
             dist: {
                 files: {
                     // minify site assets
-                    'asset/js/main.min.js': 'asset/js/main.js',
+                    'js/main.min.js': 'js/main.js',
 
                     // minify widget assets
                     'api/js/widget.js': [

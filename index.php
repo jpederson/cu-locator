@@ -8,7 +8,7 @@ error_reporting('E_NOTICE');
 	<meta name="description" content="Search 5095 Shared Credit Union Branches and 25,783 Co-op ATMs with no surcharges - all with the click of a button.">
 	<meta name="author" content="James Pederson">	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<link rel="stylesheet" href="/asset/css/main.css">
+	<link rel="stylesheet" href="css/main.css">
 	<!--[if lt IE 9]>
 	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
@@ -16,10 +16,10 @@ error_reporting('E_NOTICE');
 <body>
 	<div id="search" class="scroll-effect">
 		<header>
-			<img src="/asset/img/logo.png" id="logo">
+			<img src="img/logo.png" id="logo">
 		</header>
 		<div id="tool">
-			<iframe id="widget" src="/api/?action=widget"></iframe>
+			<iframe id="widget" src="api/?action=widget"></iframe>
 		</div>
 		<div class="clear"></div>
 	</div>
@@ -65,18 +65,14 @@ error_reporting('E_NOTICE');
 					own CU search tool right here.</p>
 			</div>
 			<div class="clear"></div>
-			<hr>
-			<div class="text-center">
-				<a href="https://www.positivessl.com" style="border:0"><img src="https://www.positivessl.com/images-new/PositiveSSL_tl_trans2.gif" alt="SSL Certificate" title="SSL Certificate" border="0" /></a>
-			</div>
 		</div>
 	</div>
 	<div id="footer" class="bg-wood">
-		<p>Copyright &copy; <?php print date( "Y" ); ?> <a href="http://jpederson.com/" target="_blank">James Pederson</a>. All Rights Reserved.</p>
+		<p>Copyright &copy; <?php print date( "Y" ); ?> <a href="https://jpederson.com/" target="_blank">James Pederson</a>. All Rights Reserved.</p>
 		<p>CO-OP Network logo and name are property of their respective owners.</p>
 	</div>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<script src="/asset/js/main.js"></script>
+	<script src="js/main.js"></script>
 	<script>
 	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
