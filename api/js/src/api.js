@@ -8,7 +8,7 @@
 	the API.
 ***************************************************/
 function api_call( action, params, callback ) {
-	$.post( "/api/?action="+action+"&"+params, function(data){
+	$.post( "./?action="+action+"&"+params, function(data){
 		callback(data);
 	});
 }
