@@ -1,7 +1,7 @@
 <?php
 
 
-// include the function library
+// include the function library and config
 require( "../functions.php" );
 
 // get the action parameter from the URL
