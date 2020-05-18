@@ -22,7 +22,7 @@ var add_branch_markers = function( branches ) {
 			cuio_map.gmap('addMarker', { 
 				'position': new google.maps.LatLng( branch.latitude, branch.longitude ), 
 				'bounds': true,
-				'icon': "/api/img/marker-branch.png"
+				'icon': "img/marker-branch.png"
 			}).click(function(){
 
 				// bind an info window click event to the new marker
@@ -65,7 +65,7 @@ var add_atm_markers = function( atms ) {
 			cuio_map.gmap('addMarker', { 
 				'position': new google.maps.LatLng( atm.latitude, atm.longitude ), 
 				'bounds': true,
-				'icon': "/api/img/marker-atm.png"
+				'icon': "img/marker-atm.png"
 			}).click(function(){
 
 				// click event for info window on this pin

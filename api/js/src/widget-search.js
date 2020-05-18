@@ -22,7 +22,7 @@ var get_locations_by_zip = function() {
 		api_call( "search", "zipcode="+zipcode+"&radius="+radius, function(data){
 			
 			// log the data temporarily.
-			// log( data );
+			log( data );
 
 			// if error, display no-results div.
 			if ( data=="No results." || data=="Invalid API Request." ) {
@@ -97,7 +97,7 @@ function get_locations_by_coords( latitude, longitude ) {
 				$('#map').gmap('addMarker', { 
 					'position': new google.maps.LatLng( latitude, longitude ), 
 					'bounds': true,
-					'icon': "/img/marker-user.png"
+					'icon': "img/marker-user.png"
 				}).click(function(){
 					$('#map').gmap('openInfoWindow', { 
 						'content': '<h3>Your Location</h3><p>Latitude: '+latitude+'<br />Longitude: '+longitude+'</p>' 
