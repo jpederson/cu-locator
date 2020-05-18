@@ -18,6 +18,8 @@ $(function(){
 	// Load the initial map.
 	$('#map').gmap({
 		'center': new google.maps.LatLng( 39.736762,-98.745117 ),
+		'streetViewControl': false,
+		'mapTypeControl': false,
 		'zoom': 4
 	});
 
